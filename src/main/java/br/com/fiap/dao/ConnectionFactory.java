@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionFactory {
@@ -49,6 +51,45 @@ public class ConnectionFactory {
     }
 
     public Connection getConexao() {
-        
+        try {
+            if (this.conexao != null && !this.conexao.isClosed()) {
+                return this.conexao;
+            }
+            if (this.getDriver() == null || this.getDriver().isEmpty()) {
+                throw new ClassNotFoundException("Nome da classe nulo ou em branco");
+            }
+            if (this.getUrl() == null || this.getUrl().isEmpty()) {
+                throw new SQLException("Url de conexão nulo ou em branco");
+            }
+            if (this.getUser() == null || this.getUser().isEmpty()) {
+                throw new SQLException("Usuário nulo ou em branco");
+            }
+            Class.forName(this.getDriver());
+            this.conexao = DriverManager.getConnection(this.getUrl(), this.getUser(), this.getPass());
+
+        } catch (SQLException e) {
+            System.out.println("Erro de SQL" + e.getMessage());
+            System.exit(1);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Erro nome da classe" + e.getMessage());
+            System.exit(1);
+        }
+        return conexao;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public String getDriver() {
+        return driver;
     }
 }
