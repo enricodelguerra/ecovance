@@ -41,5 +41,8 @@ public class Main {
         System.in.read();
         server.stop();
     }
+
+    //in br.com.fiap package
+    final ResourceConfig rc = new ResourceConfig().packages("br.com.fiap.resource");
 }
 
