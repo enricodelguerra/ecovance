@@ -1,21 +1,21 @@
 package br.com.fiap.to;
 
 public class ProjetoTO {
-    private Long codigo;
+    private Long idProjeto;
     private String nome;
     private String descricao;
     private String localizacao;
-    private Long idfonte;
+    private Long idFonte;
 
     public ProjetoTO() {
     }
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getIdProjeto() {
+        return idProjeto;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setIdProjeto(Long idProjeto) {
+        this.idProjeto = idProjeto;
     }
 
     public String getNome() {
@@ -42,11 +42,11 @@ public class ProjetoTO {
         this.localizacao = localizacao;
     }
 
-    public Long getIdfonte() {
-        return idfonte;
+    public Long getIdFonte() {
+        return idFonte;
     }
 
-    public void setIdfonte(Long idfonte) {
-        this.idfonte = idfonte;
+    public void setIdFonte(Long idFonte) {
+        this.idFonte = idFonte;
     }
 }
