@@ -1,7 +1,5 @@
 package br.com.fiap.to;
 
-import oracle.sql.DATE;
-
 import java.time.LocalDate;
 
 public class PrevisaoTO {

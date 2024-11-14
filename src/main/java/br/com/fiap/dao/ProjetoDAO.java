@@ -43,7 +43,7 @@ public class ProjetoDAO extends Repository{
                 projeto.setIdProjeto(rs.getLong("id_projeto"));
                 projeto.setNome(rs.getString("nome"));
                 projeto.setDescricao(rs.getString("descricao"));
-                projeto.setLocalizacao("localizacao");
+                projeto.setLocalizacao(rs.getString("localizacao"));
                 return projeto;
             }
         } catch (SQLException e) {
@@ -61,6 +61,9 @@ public class ProjetoDAO extends Repository{
             ps.setString(2, projeto.getDescricao());
             ps.setString(3, projeto.getLocalizacao());
             ps.setLong(4, projeto.getIdFonte());
+            if (ps.executeUpdate() > 0) {
+                return projeto;
+            }
         } catch (SQLException e) {
             System.out.println("Erro de SQL" + e.getMessage());
         } finally {
