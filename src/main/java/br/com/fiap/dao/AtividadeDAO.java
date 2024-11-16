@@ -79,4 +79,36 @@ public class AtividadeDAO extends Repository{
         return null;
     }
 
+    public AtividadeTO edit(AtividadeTO atividade, Long id) {
+        String sql = "update t_eco_atividade set NOME = ?, DESCRICAO = ?, RESPONSAVEL = ?, DATA_INICIO = ?, DATA_FIM = ? where ID_ATIVIDADE = ?";
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ps.setLong(6, id);
+            ps.setString(1, atividade.getNome());
+            ps.setString(2, atividade.getDescricao());
+            ps.setString(3, atividade.getResponsavel());
+            ps.setDate(4, Date.valueOf(atividade.getDataInicio()));
+            ps.setDate(5, Date.valueOf(atividade.getDataFim()));
+            if (ps.executeUpdate() > 0) {
+                return atividade;
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro de SQL! " + e.getMessage());
+        } finally {
+            closeConnection();
+        }
+        return null;
+    }
+
+    public boolean delete (Long codigo) {
+        String sql = "delete t_eco_atividade where ID_ATIVIDADE = ?";
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ps.setLong(1, codigo);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println("Erro de SQL! " + e.getMessage());
+        } finally {
+            closeConnection();
+        }
+        return false;
+    }
 }
