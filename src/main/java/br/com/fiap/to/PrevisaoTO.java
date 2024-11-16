@@ -12,6 +12,15 @@ public class PrevisaoTO {
 
     public PrevisaoTO() {}
 
+    public PrevisaoTO(Long idPrevisao, Long idProjeto, LocalDate dataPrevisao, String tipoEnergia, Double geracaoPrevisao, String intensidadePrevisao) {
+        this.idPrevisao = idPrevisao;
+        this.idProjeto = idProjeto;
+        this.dataPrevisao = dataPrevisao;
+        this.tipoEnergia = tipoEnergia;
+        this.geracaoPrevisao = geracaoPrevisao;
+        this.intensidadePrevisao = intensidadePrevisao;
+    }
+
     public Long getIdPrevisao() {
         return idPrevisao;
     }
