@@ -2,6 +2,7 @@ package br.com.fiap.dao;
 
 import br.com.fiap.to.AtividadeTO;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -58,5 +59,24 @@ public class AtividadeDAO extends Repository{
         return null;
     }
 
+    public AtividadeTO save(AtividadeTO atividade) {
+        String sql = "insert into t_eco_atividade (ID_PROJETO, NOME, DESCRICAO, RESPONSAVEL, DATA_INICIO, DATA_FIM) VALUES (?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ps.setLong(1, atividade.getId_projeto());
+            ps.setString(2, atividade.getNome());
+            ps.setString(3, atividade.getDescricao());
+            ps.setString(4, atividade.getResponsavel());
+            ps.setDate(5, Date.valueOf(atividade.getDataInicio()));
+            ps.setDate(6, Date.valueOf(atividade.getDataFim()));
+            if (ps.executeUpdate() > 0) {
+                return atividade;
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro de SQL! " + e.getMessage());
+        } finally {
+            closeConnection();
+        }
+        return null;
+    }
 
 }
