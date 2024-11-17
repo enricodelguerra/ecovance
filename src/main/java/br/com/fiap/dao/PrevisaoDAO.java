@@ -84,7 +84,7 @@ public class PrevisaoDAO extends Repository{
             ps.setString(2, previsao.getTipoEnergia());
             ps.setDouble(3, previsao.getGeracaoPrevisao());
             ps.setString(4, previsao.getIntensidadePrevisao());
-           previsao.setIdPrevisao(id);
+            previsao.setIdPrevisao(id);
             if (ps.executeUpdate() > 0) {
                 return previsao;
             }
