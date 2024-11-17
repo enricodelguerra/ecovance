@@ -1,25 +1,25 @@
 package br.com.fiap.to;
 
 public class EnergiaTO {
-    private Long idFOnteEnergia;
+    private Long idFonteEnergia;
     private String nomeFonte;
     private String descricao;
 
     public EnergiaTO() {
     }
 
-    public EnergiaTO(Long idFOnteEnergia, String nomeFonte, String descricao) {
-        this.idFOnteEnergia = idFOnteEnergia;
+    public EnergiaTO(Long idFonteEnergia, String nomeFonte, String descricao) {
+        this.idFonteEnergia = idFonteEnergia;
         this.nomeFonte = nomeFonte;
         this.descricao = descricao;
     }
 
-    public Long getIdFOnteEnergia() {
-        return idFOnteEnergia;
+    public Long getIdFonteEnergia() {
+        return idFonteEnergia;
     }
 
-    public void setIdFOnteEnergia(Long idFOnteEnergia) {
-        this.idFOnteEnergia = idFOnteEnergia;
+    public void setIdFonteEnergia(Long idFonteEnergia) {
+        this.idFonteEnergia = idFonteEnergia;
     }
 
     public String getNomeFonte() {

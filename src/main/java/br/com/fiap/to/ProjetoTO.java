@@ -10,6 +10,14 @@ public class ProjetoTO {
     public ProjetoTO() {
     }
 
+    public ProjetoTO(Long idProjeto, String nome, String descricao, String localizacao, Long idFonte) {
+        this.idProjeto = idProjeto;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.localizacao = localizacao;
+        this.idFonte = idFonte;
+    }
+
     public Long getIdProjeto() {
         return idProjeto;
     }

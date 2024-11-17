@@ -6,21 +6,21 @@ public class MonitoramentoTO {
     private Long idMonitoramento;
     private Long idProjeto;
     private LocalDate dataMonitoramento;
-    private String TipoEnergia;
+    private String tipoEnergia;
     private Double geracaoAtual;
     //private Double capacidadeArmazenamento;
-    private String intensidadePrevisao;
+    private String status;
 
     public MonitoramentoTO() {
     }
 
-    public MonitoramentoTO(Long idMonitoramento, Long idProjeto, LocalDate dataMonitoramento, String tipoEnergia, Double geracaoAtual, String intensidadePrevisao) {
+    public MonitoramentoTO(Long idMonitoramento, Long idProjeto, LocalDate dataMonitoramento, String tipoEnergia, Double geracaoAtual, String status) {
         this.idMonitoramento = idMonitoramento;
         this.idProjeto = idProjeto;
         this.dataMonitoramento = dataMonitoramento;
-        TipoEnergia = tipoEnergia;
+        this.tipoEnergia = tipoEnergia;
         this.geracaoAtual = geracaoAtual;
-        this.intensidadePrevisao = intensidadePrevisao;
+        this.status = status;
     }
 
     public Long getIdMonitoramento() {
@@ -48,11 +48,11 @@ public class MonitoramentoTO {
     }
 
     public String getTipoEnergia() {
-        return TipoEnergia;
+        return this.tipoEnergia;
     }
 
     public void setTipoEnergia(String tipoEnergia) {
-        TipoEnergia = tipoEnergia;
+        this.tipoEnergia = tipoEnergia;
     }
 
     public Double getGeracaoAtual() {
@@ -63,11 +63,11 @@ public class MonitoramentoTO {
         this.geracaoAtual = geracaoAtual;
     }
 
-    public String getIntensidadePrevisao() {
-        return intensidadePrevisao;
+    public String getStatus() {
+        return status;
     }
 
-    public void setIntensidadePrevisao(String intensidadePrevisao) {
-        this.intensidadePrevisao = intensidadePrevisao;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
