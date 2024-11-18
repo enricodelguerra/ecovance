@@ -35,7 +35,7 @@ public class ConnectionFactory {
             prop.load(file);
             String url = prop.getProperty("datasource.url");
             String user = prop.getProperty("datasource.username");
-            String pass = prop.getProperty("datasorce.password");
+            String pass = prop.getProperty("datasource.password");
             String driver = prop.getProperty("datasource.driver-class-name");
             file.close();
             if (instance == null) {

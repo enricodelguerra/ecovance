@@ -16,7 +16,7 @@ public class ProjetoDAO extends Repository{
             if (rs != null) {
                 while (rs.next()) {
                     ProjetoTO projeto = new ProjetoTO();
-                    projeto.setIdFonte(rs.getLong("id_fonte"));
+                    projeto.setIdFonte(rs.getLong("id_fonte_energia"));
                     projeto.setIdProjeto(rs.getLong("id_projeto"));
                     projeto.setNome(rs.getString("nome"));
                     projeto.setDescricao(rs.getString("descricao"));
@@ -39,7 +39,7 @@ public class ProjetoDAO extends Repository{
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 ProjetoTO projeto = new ProjetoTO();
-                projeto.setIdFonte(rs.getLong("id_fonte"));
+                projeto.setIdFonte(rs.getLong("id_fonte_energia"));
                 projeto.setIdProjeto(rs.getLong("id_projeto"));
                 projeto.setNome(rs.getString("nome"));
                 projeto.setDescricao(rs.getString("descricao"));
