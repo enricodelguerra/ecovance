@@ -1,5 +1,5 @@
 package br.com.fiap.bo;
 
-public class AtividadeBO
-{
+public class AtividadeBO {
+
 }
