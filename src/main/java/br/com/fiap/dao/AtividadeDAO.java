@@ -79,7 +79,7 @@ public class AtividadeDAO extends Repository{
         return null;
     }
 
-    public AtividadeTO edit(AtividadeTO atividade, Long id) {
+    public AtividadeTO edit( Long id, AtividadeTO atividade) {
         String sql = "update t_eco_atividade set NOME = ?, DESCRICAO = ?, RESPONSAVEL = ?, DATA_INICIO = ?, DATA_FIM = ? where ID_ATIVIDADE = ?";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
             ps.setLong(6, id);
