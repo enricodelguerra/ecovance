@@ -55,7 +55,7 @@ public class ProjetoDAO extends Repository{
     }
 
     public ProjetoTO save(ProjetoTO projeto) {
-        String sql = "insert into t_eco_projeto (NOME , DESCRICAO, LOCALIZACAO, ID_FONTE) values (?, ?, ?, ?)";
+        String sql = "insert into t_eco_projeto (NOME , DESCRICAO, LOCALIZACAO, ID_FONTE_ENERGIA) values (?, ?, ?, ?)";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)){
             ps.setString(1, projeto.getNome());
             ps.setString(2, projeto.getDescricao());
