@@ -77,7 +77,7 @@ public class PrevisaoDAO extends Repository{
     }
 
     public PrevisaoTO edit(PrevisaoTO previsao) {
-        String sql = "update t_eco_previsao set DATA_PREVISAO = ?, TIPO_ENERGIA = ?, GERACAO_PREVISAO = ? where ID_PREVISAO = ?";
+        String sql = "update t_eco_previsao set DATA_PREVISAO = ?, TIPO_ENERGIA = ?, GERACAO_PREVISAO = ?, INTENSIDADE_PREVISAO = ? where ID_PREVISAO = ?";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)){
             ps.setLong(5, previsao.getIdPrevisao());
             ps.setDate(1, Date.valueOf(previsao.getDataPrevisao()));
