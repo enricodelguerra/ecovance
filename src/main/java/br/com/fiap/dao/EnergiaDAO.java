@@ -31,7 +31,7 @@ public class EnergiaDAO extends Repository {
     }
 
     public EnergiaTO findById(Long id) {
-        String sql = "select * from t_eco_fonte_energia where id_fonte_energia";
+        String sql = "select * from t_eco_fonte_energia where id_fonte_energia = ?";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
         ps.setLong(1, id);
         ResultSet rs = ps.executeQuery();
@@ -67,7 +67,7 @@ public class EnergiaDAO extends Repository {
     }
 
     public EnergiaTO edit( EnergiaTO energia) {
-        String sql= "update t_eco_fonte_energia set NOME = ?, DESCRICAO = ?";
+        String sql= "update t_eco_fonte_energia set NOME = ?, DESCRICAO = ? where ID_FONTE_ENERGIA = ?";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
             ps.setLong(3, energia.getIdFonteEnergia());
             ps.setString(1, energia.getNomeFonte());

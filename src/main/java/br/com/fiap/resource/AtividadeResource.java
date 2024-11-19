@@ -1,20 +1,21 @@
 package br.com.fiap.resource;
 
-import br.com.fiap.bo.EnergiaBO;
-import br.com.fiap.to.EnergiaTO;
+import br.com.fiap.bo.AtividadeBO;
+import br.com.fiap.to.AtividadeTO;
+import br.com.fiap.to.ProjetoTO;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
 
-@Path("/ecovance/energia")
-public class EnergiaResource {
-    private EnergiaBO energiaBO = new EnergiaBO();
+public class AtividadeResource {
+    private AtividadeBO atividadeBO = new AtividadeBO();
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
-        ArrayList<EnergiaTO> resultado = energiaBO.findAll();
+        ArrayList<AtividadeTO> resultado = atividadeBO.findAll();
         Response.ResponseBuilder response = null;
         if (resultado != null) {
             response = Response.ok(); //200 (OK)
@@ -25,10 +26,10 @@ public class EnergiaResource {
         return response.build();
     }
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findById(@PathParam("id") Long id) {
-        EnergiaTO resultado = energiaBO.findById(id);
+        AtividadeTO resultado = atividadeBO.findById(id);
         Response.ResponseBuilder response = null;
         if (resultado != null) {
             response = Response.ok(); // 200 (OK)
@@ -41,8 +42,8 @@ public class EnergiaResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response save(EnergiaTO energia) {
-        EnergiaTO resultado = energiaBO.save(energia);
+    public Response save(AtividadeTO atividade) {
+        AtividadeTO resultado = atividadeBO.save(atividade);
         Response.ResponseBuilder response = null;
         if (resultado != null) {
             response = Response.created(null); // 201 - CREATED
@@ -57,7 +58,7 @@ public class EnergiaResource {
     @Path("{id}")
     public Response delete(@PathParam("id") Long id) {
         Response.ResponseBuilder response = null;
-        if (energiaBO.delete(id)) {
+        if (atividadeBO.delete(id)) {
             response = Response.status(204); // 204 - NO CONTENT
         } else {
             response = Response.status(404); // 404 - NOT FOUND
@@ -68,9 +69,9 @@ public class EnergiaResource {
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response edit(EnergiaTO energia, @PathParam("id") Long id) {
-        energia.setIdFonteEnergia(id);
-        EnergiaTO resultado = energiaBO.edit(energia);
+    public Response edit(@Valid AtividadeTO atividade, @PathParam("id") Long id) {
+        atividade.setIdAtividade(id);
+        AtividadeTO resultado = atividadeBO.edit(atividade);
         Response.ResponseBuilder response = null;
         if (resultado != null) {
             response = Response.created(null); // 201 - CREATED
