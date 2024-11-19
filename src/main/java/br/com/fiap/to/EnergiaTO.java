@@ -1,8 +1,12 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.NotNull;
+
 public class EnergiaTO {
     private Long idFonteEnergia;
+    @NotNull
     private String nomeFonte;
+    @NotNull
     private String descricao;
 
     public EnergiaTO() {

@@ -1,14 +1,21 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+
 import java.time.LocalDate;
 
 public class MonitoramentoTO {
     private Long idMonitoramento;
+    @NotNull
     private Long idProjeto;
+    @PastOrPresent
     private LocalDate dataMonitoramento;
+    @NotNull
     private String tipoEnergia;
+    @NotNull
     private Double geracaoAtual;
-    //private Double capacidadeArmazenamento;
+    @NotNull
     private String status;
 
     public MonitoramentoTO() {

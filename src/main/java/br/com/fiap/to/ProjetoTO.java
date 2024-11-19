@@ -1,10 +1,16 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.NotNull;
+
 public class ProjetoTO {
     private Long idProjeto;
+    @NotNull
     private String nome;
+    @NotNull
     private String descricao;
+    @NotNull
     private String localizacao;
+    @NotNull
     private Long idFonte;
 
     public ProjetoTO() {

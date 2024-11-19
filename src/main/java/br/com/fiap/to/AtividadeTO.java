@@ -1,14 +1,23 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+
 import java.time.LocalDate;
 
 public class AtividadeTO {
     private Long idAtividade;
+    @NotNull
     private Long id_projeto;
+    @NotNull
     private String nome;
+    @NotNull
     private String descricao;
     private String responsavel;
+    @PastOrPresent
     private LocalDate dataInicio;
+    @Future
     private LocalDate dataFim;
 
     public AtividadeTO() {
