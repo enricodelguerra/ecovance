@@ -9,7 +9,7 @@ import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
 
-@Path("monitoramento")
+@Path("/ecovance/monitoramento")
 public class MonitoramentoResource {
     private MonitoramentoBO monitoramentoBO = new MonitoramentoBO();
     @GET
@@ -56,7 +56,7 @@ public class MonitoramentoResource {
 
     @DELETE
     @Path("{id}")
-    public Response delete(Long id) {
+    public Response delete(@PathParam("id") Long id) {
         Response.ResponseBuilder response = null;
         if (monitoramentoBO.delete(id)) {
             response = Response.status(204); // 204 - NO CONTENT

@@ -58,7 +58,7 @@ public class MonitoramentoDAO extends Repository {
     }
 
     public MonitoramentoTO save(MonitoramentoTO monitoramento) {
-        String sql = "insert into t_eco_moitoramento (ID_PROJETO, DATA_MONITORAMENTO, TIPO_ENERGIA, GERACAO_ATUAL, STATUS) values (?, ?, ?, ?, ?)";
+        String sql = "insert into t_eco_monitoramento (ID_PROJETO, DATA_MONITORAMENTO, TIPO_ENERGIA, GERACAO_ATUAL, STATUS) values (?, ?, ?, ?, ?)";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
             ps.setLong(1, monitoramento.getIdProjeto());
             ps.setDate(2, Date.valueOf(monitoramento.getDataMonitoramento()));
