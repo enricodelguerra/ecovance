@@ -66,5 +66,20 @@ public class ProjetoResource {
         return response.build();
     }
 
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response edit(@Valid ProjetoTO projeto, @PathParam("id") Long id) {
+        projeto.setIdProjeto(id);
+        ProjetoTO resultado = projetoBO.edit(projeto);
+        Response.ResponseBuilder response = null;
+        if (resultado != null) {
+            response = Response.created(null); // 201 - CREATED
+        } else {
+            response = Response.status(400); // - BAD REQUEST
+        }
+        return response.build();
+    }
+
 
 }

@@ -23,9 +23,9 @@ public class ProjetoBO {
         return ProjetoDAO.save(projeto);
     }
 
-    public ProjetoTO edit(Long id, ProjetoTO projeto) {
+    public ProjetoTO edit(ProjetoTO projeto) {
         ProjetoDAO = new ProjetoDAO();
-        return ProjetoDAO.edit(id, projeto);
+        return ProjetoDAO.edit( projeto);
     }
 
     public boolean delete(Long codigo) {

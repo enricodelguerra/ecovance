@@ -72,14 +72,13 @@ public class ProjetoDAO extends Repository{
         return null;
     }
 
-    public ProjetoTO edit(Long id, ProjetoTO projeto) {
+    public ProjetoTO edit( ProjetoTO projeto) {
         String sql = "update t_eco_projeto set NOME = ?, DESCRICAO = ?, LOCALIZACAO = ? where ID_PROJETO = ?";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)){
-            ps.setLong(4, id);
+            ps.setLong(4, projeto.getIdProjeto());
             ps.setString(1, projeto.getNome());
             ps.setString(2, projeto.getDescricao());
             ps.setString(3, projeto.getLocalizacao());
-            projeto.setIdProjeto(id);
             if (ps.executeUpdate() > 0) {
                 return projeto;
             }
