@@ -23,9 +23,9 @@ public class AtividadeBO {
         return AtividadeDAO.save(atividade);
     }
 
-    public AtividadeTO edit(Long id, AtividadeTO atividade) {
+    public AtividadeTO edit( AtividadeTO atividade) {
         AtividadeDAO = new AtividadeDAO();
-        return AtividadeDAO.edit(id, atividade);
+        return AtividadeDAO.edit(atividade);
     }
 
     public boolean delete(Long codigo) {

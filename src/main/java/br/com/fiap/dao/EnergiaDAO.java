@@ -66,13 +66,12 @@ public class EnergiaDAO extends Repository {
         return null;
     }
 
-    public EnergiaTO edit(Long id, EnergiaTO energia) {
+    public EnergiaTO edit( EnergiaTO energia) {
         String sql= "update t_eco_fonte_energia set NOME = ?, DESCRICAO = ?";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
-            ps.setLong(3, id);
+            ps.setLong(3, energia.getIdFonteEnergia());
             ps.setString(1, energia.getNomeFonte());
             ps.setString(2, energia.getDescricao());
-            energia.setIdFonteEnergia(id);
             if (ps.executeUpdate() > 0) {
                 return energia;
             }

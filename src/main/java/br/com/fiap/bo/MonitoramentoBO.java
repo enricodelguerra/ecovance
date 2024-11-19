@@ -23,9 +23,9 @@ public class MonitoramentoBO {
         return MonitoramentoDAO.save(monitoramento);
     }
 
-    public MonitoramentoTO edit(Long id, MonitoramentoTO monitoramento) {
+    public MonitoramentoTO edit(MonitoramentoTO monitoramento) {
         MonitoramentoDAO = new MonitoramentoDAO();
-        return MonitoramentoDAO.edit(id, monitoramento);
+        return MonitoramentoDAO.edit( monitoramento);
     }
 
     public boolean delete(Long codigo) {

@@ -76,15 +76,14 @@ public class MonitoramentoDAO extends Repository {
         return null;
     }
 
-    public MonitoramentoTO edit(Long id, MonitoramentoTO monitoramento) {
+    public MonitoramentoTO edit(MonitoramentoTO monitoramento) {
         String sql = "update t_eco_monitoramento set DATA_MONITORAMENTO = ?, TIPO_ENERGIA = ?, GERACAO_ATUAL = ?, STATUS =? where ID_MONITORAMENTO = ? ";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
-            ps.setLong(5, id);
+            ps.setLong(5, monitoramento.getIdMonitoramento());
             ps.setDate(1, Date.valueOf(monitoramento.getDataMonitoramento()));
             ps.setString(2, monitoramento.getTipoEnergia());
             ps.setDouble(3, monitoramento.getGeracaoAtual());
             ps.setString(4, monitoramento.getStatus());
-            monitoramento.setIdMonitoramento(id);
             if (ps.executeUpdate() > 0) {
                 return monitoramento;
             }

@@ -23,9 +23,9 @@ public class EnergiaBO {
         return EnergiaDAO.save(energia);
     }
 
-    public EnergiaTO edit(Long id, EnergiaTO energia) {
+    public EnergiaTO edit( EnergiaTO energia) {
         EnergiaDAO = new EnergiaDAO();
-        return EnergiaDAO.edit(id, energia);
+        return EnergiaDAO.edit(energia);
     }
 
     public boolean delete(Long codigo) {
