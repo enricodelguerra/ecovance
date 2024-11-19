@@ -76,15 +76,14 @@ public class PrevisaoDAO extends Repository{
         return null;
     }
 
-    public PrevisaoTO edit(Long id, PrevisaoTO previsao) {
+    public PrevisaoTO edit(PrevisaoTO previsao) {
         String sql = "update t_eco_previsao set DATA_PREVISAO = ?, TIPO_ENERGIA = ?, GERACAO_PREVISAO = ? where ID_PREVISAO = ?";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)){
-            ps.setLong(5, id);
+            ps.setLong(5, previsao.getIdPrevisao());
             ps.setDate(1, Date.valueOf(previsao.getDataPrevisao()));
             ps.setString(2, previsao.getTipoEnergia());
             ps.setDouble(3, previsao.getGeracaoPrevisao());
             ps.setString(4, previsao.getIntensidadePrevisao());
-            previsao.setIdPrevisao(id);
             if (ps.executeUpdate() > 0) {
                 return previsao;
             }

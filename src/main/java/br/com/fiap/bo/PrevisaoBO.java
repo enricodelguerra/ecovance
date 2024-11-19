@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class PrevisaoBO {
     PrevisaoDAO PrevisaoDAO;
 
-    public ArrayList<PrevisaoTO> finsAll() {
+    public ArrayList<PrevisaoTO> findAll() {
         PrevisaoDAO = new PrevisaoDAO();
         return PrevisaoDAO.findAll();
     }
@@ -23,9 +23,9 @@ public class PrevisaoBO {
         return PrevisaoDAO.save(previsao);
     }
 
-    public PrevisaoTO edit(Long id, PrevisaoTO previsao) {
+    public PrevisaoTO edit(PrevisaoTO previsao) {
         PrevisaoDAO = new PrevisaoDAO();
-        return PrevisaoDAO.edit(id, previsao);
+        return PrevisaoDAO.edit( previsao);
     }
 
     public boolean delete(Long codigo) {
