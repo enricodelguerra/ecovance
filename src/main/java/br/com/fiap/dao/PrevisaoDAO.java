@@ -21,7 +21,7 @@ public class PrevisaoDAO extends Repository{
                     previsao.setIdProjeto(rs.getLong("id_projeto"));
                     previsao.setDataPrevisao(rs.getDate("data_previsao").toLocalDate());
                     previsao.setTipoEnergia(rs.getString("tipo_energia"));
-                    previsao.setGeracaoPrevisao(rs.getDouble("localizacao"));
+                    previsao.setGeracaoPrevisao(rs.getDouble("geracao_previsao"));
                     previsao.setIntensidadePrevisao(rs.getString("intensidade_previsao"));
                    previsoes.add(previsao);
                 }
@@ -45,7 +45,7 @@ public class PrevisaoDAO extends Repository{
                 previsao.setIdProjeto(rs.getLong("id_projeto"));
                 previsao.setDataPrevisao(rs.getDate("data_previsao").toLocalDate());
                 previsao.setTipoEnergia(rs.getString("tipo_energia"));
-                previsao.setGeracaoPrevisao(rs.getDouble("localizacao"));
+                previsao.setGeracaoPrevisao(rs.getDouble("geracao_previsao"));
                 previsao.setIntensidadePrevisao(rs.getString("intensidade_previsao"));
                 return previsao;
             }

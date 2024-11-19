@@ -42,7 +42,7 @@ public class ProjetoResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response save(@Valid ProjetoTO projeto) {
+    public Response save(ProjetoTO projeto) {
         ProjetoTO resultado = projetoBO.save(projeto);
         Response.ResponseBuilder response = null;
         if (resultado != null) {
