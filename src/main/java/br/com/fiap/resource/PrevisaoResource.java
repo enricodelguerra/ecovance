@@ -57,7 +57,7 @@ public class PrevisaoResource {
 
     @DELETE
     @Path("{id}")
-    public Response delete(Long id ) {
+    public Response delete(@PathParam("id") Long id ) {
         Response.ResponseBuilder response = null;
         if (previsaoBO.delete(id)) {
             response = Response.status(204); // 204 - NO CONTENT

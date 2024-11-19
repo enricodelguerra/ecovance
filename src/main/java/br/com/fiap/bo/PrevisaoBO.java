@@ -29,6 +29,7 @@ public class PrevisaoBO {
     }
 
     public boolean delete(Long codigo) {
+        PrevisaoDAO = new PrevisaoDAO();
         return PrevisaoDAO.delete(codigo);
     }
 }
