@@ -10,6 +10,7 @@ import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
 
+@Path("/ecovance/atividade")
 public class AtividadeResource {
     private AtividadeBO atividadeBO = new AtividadeBO();
     @GET
