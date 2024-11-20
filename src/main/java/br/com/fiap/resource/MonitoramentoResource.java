@@ -1,6 +1,7 @@
 package br.com.fiap.resource;
 
 import br.com.fiap.bo.MonitoramentoBO;
+import br.com.fiap.exceptions.MonitoramentoNaoEncontradoException;
 import br.com.fiap.to.MonitoramentoTO;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -20,7 +21,7 @@ public class MonitoramentoResource {
         if (resultado != null) {
             response = Response.ok(); //200 (OK)
         } else {
-            response = Response.status(404); // 404 (NOT FOUND)
+            throw new MonitoramentoNaoEncontradoException("Nenhum monitoramento encontrado."); // 404 (NOT FOUND)
         }
         response.entity(resultado);
         return response.build();
@@ -34,7 +35,7 @@ public class MonitoramentoResource {
         if (resultado != null) {
             response = Response.ok(); // 200 (OK)
         } else {
-            response = Response.status(404); // 404 (NOT FOUND)
+            throw new MonitoramentoNaoEncontradoException("Monitoramento com id " + id + " não encontrado."); // 404 (NOT FOUND)
         }
         response.entity(resultado);
         return response.build();
@@ -48,7 +49,7 @@ public class MonitoramentoResource {
         if (resultado != null) {
             response = Response.created(null); // 201 - CREATED
         } else {
-            response = Response.status(400); // 401 - BAD REQUEST
+            response = Response.status(400);
         }
         response.entity(resultado);
         return response.build();
@@ -61,7 +62,7 @@ public class MonitoramentoResource {
         if (monitoramentoBO.delete(id)) {
             response = Response.status(204); // 204 - NO CONTENT
         } else {
-            response = Response.status(404); // 404 - NOT FOUND
+            throw new MonitoramentoNaoEncontradoException("Monitoramento com id " + id + " não encontrado."); // 404 - NOT FOUND
         }
         return response.build();
     }
@@ -76,7 +77,7 @@ public class MonitoramentoResource {
         if (resultado != null) {
             response = Response.created(null); // 201 - CREATED
         } else {
-            response = Response.status(400); // - BAD REQUEST
+            response = Response.status(400);
         }
         return response.build();
     }

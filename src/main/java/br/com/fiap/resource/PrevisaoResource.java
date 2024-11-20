@@ -1,6 +1,7 @@
 package br.com.fiap.resource;
 
 import br.com.fiap.bo.PrevisaoBO;
+import br.com.fiap.exceptions.PrevisaoNaoEncontradaException;
 import br.com.fiap.to.PrevisaoTO;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -20,7 +21,7 @@ public class PrevisaoResource {
         if (resultado != null) {
             response = Response.ok(); // 200 - OK
         } else {
-            response = Response.status(404); // 404 - NOT FOUND
+            throw new PrevisaoNaoEncontradaException("Nenhuma previsão encontrada."); // 404 - NOT FOUND
         }
         response.entity(resultado);
         return response.build();
@@ -35,7 +36,7 @@ public class PrevisaoResource {
         if (resultado != null) {
             response = Response.ok(); // 200 (OK)
         } else {
-            response = Response.status(404); // 404 (NOT FOUND)
+            throw new PrevisaoNaoEncontradaException("Previsão com id " + id + " não encontrada."); // 404 (NOT FOUND)
         }
         response.entity(resultado);
         return response.build();
@@ -49,7 +50,7 @@ public class PrevisaoResource {
         if (resultado != null) {
             response = Response.created(null); // 201 - CREATED
         } else {
-            response = Response.status(400); // 401 - BAD REQUEST
+           response = Response.status(400); // 401 - BAD REQUEST
         }
         response.entity(resultado);
         return response.build();
@@ -62,7 +63,7 @@ public class PrevisaoResource {
         if (previsaoBO.delete(id)) {
             response = Response.status(204); // 204 - NO CONTENT
         } else {
-            response = Response.status(404); // 404 - NOT FOUND
+            throw new PrevisaoNaoEncontradaException("Previsão com id " + id + " não encontrada para exclusão."); // 404 - NOT FOUND
         }
         return response.build();
     }
