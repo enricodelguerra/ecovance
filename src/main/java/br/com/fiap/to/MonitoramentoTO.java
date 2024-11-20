@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 public class MonitoramentoTO {
     private Long idMonitoramento;
-    @NotNull
     private Long idProjeto;
     @PastOrPresent
     private LocalDate dataMonitoramento;
