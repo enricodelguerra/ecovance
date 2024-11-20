@@ -1,6 +1,7 @@
 package br.com.fiap.bo;
 
 import br.com.fiap.dao.ProjetoDAO;
+import br.com.fiap.exceptions.FonteInvalidaException;
 import br.com.fiap.to.ProjetoTO;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class ProjetoBO {
         ProjetoDAO = new ProjetoDAO();
         // Valida o relacionamento com a fonte, verificando se está entre 1 e 6
         if (!projeto.possuiFontesRelacionadas()) {
-            throw new IllegalArgumentException("Projeto não está associado a uma fonte válida. Fonte deve estar entre 1 e 6.");
+            throw new FonteInvalidaException("Projeto não está associado a uma fonte válida. Fonte deve estar entre 1 e 6.");
         }
         projeto.padronizarLocalizacao();
         return ProjetoDAO.save(projeto);
@@ -32,7 +33,7 @@ public class ProjetoBO {
         ProjetoDAO = new ProjetoDAO();
         // Valida o relacionamento com a fonte, verificando se está entre 1 e 6
         if (!projeto.possuiFontesRelacionadas()) {
-            throw new IllegalArgumentException("Projeto não está associado a uma fonte válida. Fonte deve estar entre 1 e 6.");
+            throw new FonteInvalidaException("Projeto não está associado a uma fonte válida. Fonte deve estar entre 1 e 6.");
         }
         projeto.padronizarLocalizacao();
         return ProjetoDAO.edit( projeto);

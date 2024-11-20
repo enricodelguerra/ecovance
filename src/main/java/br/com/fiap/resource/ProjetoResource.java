@@ -1,6 +1,8 @@
 package br.com.fiap.resource;
 
 import br.com.fiap.bo.ProjetoBO;
+import br.com.fiap.exceptions.FonteInvalidaException;
+import br.com.fiap.exceptions.ProjetoNaoEncontradoException;
 import br.com.fiap.to.ProjetoTO;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -20,7 +22,7 @@ public class ProjetoResource {
         if (resultado != null) {
             response = Response.ok(); //200 (OK)
         } else {
-            response = Response.status(404); // 404 (NOT FOUND)
+           throw new ProjetoNaoEncontradoException("Nenhum projeto encontrado."); // 404 (NOT FOUND)
         }
         response.entity(resultado);
         return response.build();
@@ -34,7 +36,7 @@ public class ProjetoResource {
         if (resultado != null) {
             response = Response.ok(); // 200 (OK)
         } else {
-            response = Response.status(404); // 404 (NOT FOUND)
+          throw new ProjetoNaoEncontradoException("Projeto com id " + id + " não encontrado"); // 404 Not - Found
         }
         response.entity(resultado);
         return response.build();
@@ -80,6 +82,5 @@ public class ProjetoResource {
         }
         return response.build();
     }
-
 
 }
