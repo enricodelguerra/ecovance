@@ -1,6 +1,8 @@
 package br.com.fiap.resource;
 
 import br.com.fiap.bo.EnergiaBO;
+import br.com.fiap.exceptions.EnergiaNaoEncontradaException;
+import br.com.fiap.exceptions.EnergiaNaoExcluidaException;
 import br.com.fiap.to.EnergiaTO;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -19,7 +21,7 @@ public class EnergiaResource {
         if (resultado != null) {
             response = Response.ok(); //200 (OK)
         } else {
-            response = Response.status(404); // 404 (NOT FOUND)
+            throw new EnergiaNaoEncontradaException("Nenhuma energia encontrada."); // 404 (NOT FOUND)
         }
         response.entity(resultado);
         return response.build();
@@ -33,7 +35,7 @@ public class EnergiaResource {
         if (resultado != null) {
             response = Response.ok(); // 200 (OK)
         } else {
-            response = Response.status(404); // 404 (NOT FOUND)
+            throw new EnergiaNaoEncontradaException("Energia com ID " + id + " não encontrada."); // 404 (NOT FOUND)
         }
         response.entity(resultado);
         return response.build();
@@ -47,7 +49,7 @@ public class EnergiaResource {
         if (resultado != null) {
             response = Response.created(null); // 201 - CREATED
         } else {
-            response = Response.status(400); // 401 - BAD REQUEST
+            response = Response.status(400);
         }
         response.entity(resultado);
         return response.build();
@@ -60,7 +62,7 @@ public class EnergiaResource {
         if (energiaBO.delete(id)) {
             response = Response.status(204); // 204 - NO CONTENT
         } else {
-            response = Response.status(404); // 404 - NOT FOUND
+            throw new EnergiaNaoExcluidaException("Erro ao excluir a energia com ID " + id + "."); // 404 - NOT FOUND
         }
         return response.build();
     }
@@ -75,7 +77,7 @@ public class EnergiaResource {
         if (resultado != null) {
             response = Response.created(null); // 201 - CREATED
         } else {
-            response = Response.status(400); // - BAD REQUEST
+            response = Response.status(400);
         }
         return response.build();
     }

@@ -50,7 +50,7 @@ public class PrevisaoResource {
         if (resultado != null) {
             response = Response.created(null); // 201 - CREATED
         } else {
-           response = Response.status(400); // 401 - BAD REQUEST
+           response = Response.status(400);
         }
         response.entity(resultado);
         return response.build();
@@ -78,7 +78,7 @@ public class PrevisaoResource {
         if (resultado != null) {
             response = Response.created(null); // 201 - CREATED
         } else {
-            response = Response.status(400); // - BAD REQUEST
+            response = Response.status(400);
         }
         return response.build();
     }
