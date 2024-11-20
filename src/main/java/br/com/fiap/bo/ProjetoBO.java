@@ -1,6 +1,7 @@
 package br.com.fiap.bo;
 
 import br.com.fiap.dao.ProjetoDAO;
+import br.com.fiap.exceptions.AtividadeValidationException;
 import br.com.fiap.exceptions.FonteInvalidaException;
 import br.com.fiap.to.ProjetoTO;
 
@@ -16,6 +17,9 @@ public class ProjetoBO {
 
     public ProjetoTO findById(Long id) {
         ProjetoDAO = new ProjetoDAO();
+        if (id == null || id <= 0) {
+            throw new AtividadeValidationException("ID da atividade inválido.");
+        }
         return ProjetoDAO.findByid(id);
     }
 

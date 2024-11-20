@@ -1,6 +1,7 @@
 package br.com.fiap.bo;
 
 import br.com.fiap.dao.PrevisaoDAO;
+import br.com.fiap.exceptions.AtividadeValidationException;
 import br.com.fiap.to.PrevisaoTO;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ public class PrevisaoBO {
 
     public PrevisaoTO findById(Long id) {
         PrevisaoDAO = new PrevisaoDAO();
+        if (id == null || id <= 0) {
+            throw new AtividadeValidationException("ID da atividade inválido.");
+        }
         return PrevisaoDAO.findByid(id);
     }
 

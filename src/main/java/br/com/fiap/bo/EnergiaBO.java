@@ -1,6 +1,7 @@
 package br.com.fiap.bo;
 
 import br.com.fiap.dao.EnergiaDAO;
+import br.com.fiap.exceptions.AtividadeValidationException;
 import br.com.fiap.to.EnergiaTO;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ public class EnergiaBO {
 
     public EnergiaTO findById(Long id) {
         EnergiaDAO = new EnergiaDAO();
+        if (id == null || id <= 0) {
+            throw new AtividadeValidationException("ID da atividade inválido.");
+        }
         return EnergiaDAO.findById(id);
     }
 
