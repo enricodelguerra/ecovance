@@ -75,4 +75,16 @@ public class PrevisaoTO {
     public void setIntensidadePrevisao(String intensidadePrevisao) {
         this.intensidadePrevisao = intensidadePrevisao;
     }
+
+    public boolean validarPrevisao() {
+        if ("alta".equalsIgnoreCase(intensidadePrevisao) && geracaoPrevisao < 1000) {
+            return false; // Intensidade alta deve ter geração acima de 1000
+        } else if ("media".equalsIgnoreCase(intensidadePrevisao) && (geracaoPrevisao < 500 || geracaoPrevisao >= 1000)) {
+            return false; // Intensidade média deve ter geração entre 500 e 999
+        } else if ("baixa".equalsIgnoreCase(intensidadePrevisao) && geracaoPrevisao >= 500) {
+            return false; // Intensidade baixa deve ter geração abaixo de 500
+        }
+        return true;
+    }
 }
+

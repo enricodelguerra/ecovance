@@ -20,8 +20,12 @@ public class PrevisaoBO {
 
     public PrevisaoTO save(PrevisaoTO previsao) {
         PrevisaoDAO = new PrevisaoDAO();
+        if (!previsao.validarPrevisao()) {
+            throw new IllegalArgumentException("Dados de previsão inválidos para salvar.");
+        }
         return PrevisaoDAO.save(previsao);
     }
+
 
     public PrevisaoTO edit(PrevisaoTO previsao) {
         PrevisaoDAO = new PrevisaoDAO();
