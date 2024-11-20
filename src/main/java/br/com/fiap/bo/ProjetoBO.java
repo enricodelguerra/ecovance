@@ -20,11 +20,21 @@ public class ProjetoBO {
 
     public ProjetoTO save(ProjetoTO projeto) {
         ProjetoDAO = new ProjetoDAO();
+        // Valida o relacionamento com a fonte, verificando se está entre 1 e 6
+        if (!projeto.possuiFontesRelacionadas()) {
+            throw new IllegalArgumentException("Projeto não está associado a uma fonte válida. Fonte deve estar entre 1 e 6.");
+        }
+        projeto.padronizarLocalizacao();
         return ProjetoDAO.save(projeto);
     }
 
     public ProjetoTO edit(ProjetoTO projeto) {
         ProjetoDAO = new ProjetoDAO();
+        // Valida o relacionamento com a fonte, verificando se está entre 1 e 6
+        if (!projeto.possuiFontesRelacionadas()) {
+            throw new IllegalArgumentException("Projeto não está associado a uma fonte válida. Fonte deve estar entre 1 e 6.");
+        }
+        projeto.padronizarLocalizacao();
         return ProjetoDAO.edit( projeto);
     }
 

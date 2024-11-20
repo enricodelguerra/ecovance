@@ -63,4 +63,16 @@ public class ProjetoTO {
     public void setIdFonte(Long idFonte) {
         this.idFonte = idFonte;
     }
+
+    public void padronizarLocalizacao() {
+        if (localizacao != null) {
+            this.localizacao = localizacao.trim().toUpperCase();
+        }
+    }
+
+    // Valida se o idFonte está dentro do intervalo permitido (1 a 6)
+    public boolean possuiFontesRelacionadas() {
+        return idFonte >= 1 && idFonte <= 6;  // Verifica se o ID da fonte está entre 1 e 6
+    }
+
 }
