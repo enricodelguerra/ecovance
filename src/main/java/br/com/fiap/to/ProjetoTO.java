@@ -11,18 +11,19 @@ public class ProjetoTO {
     @NotNull
     private String localizacao;
     @NotNull
-    private Long idFonte;
+    private String tipoEnergia;
 
     public ProjetoTO() {
     }
 
-    public ProjetoTO(Long idProjeto, String nome, String descricao, String localizacao, Long idFonte) {
+    public ProjetoTO(Long idProjeto, String nome, String descricao, String localizacao, String tipoEnergia) {
         this.idProjeto = idProjeto;
         this.nome = nome;
         this.descricao = descricao;
         this.localizacao = localizacao;
-        this.idFonte = idFonte;
+        this.tipoEnergia = tipoEnergia;
     }
+
 
     public Long getIdProjeto() {
         return idProjeto;
@@ -32,36 +33,36 @@ public class ProjetoTO {
         this.idProjeto = idProjeto;
     }
 
-    public String getNome() {
+    public @NotNull String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(@NotNull String nome) {
         this.nome = nome;
     }
 
-    public String getDescricao() {
+    public @NotNull String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public void setDescricao(@NotNull String descricao) {
         this.descricao = descricao;
     }
 
-    public String getLocalizacao() {
+    public @NotNull String getLocalizacao() {
         return localizacao;
     }
 
-    public void setLocalizacao(String localizacao) {
+    public void setLocalizacao(@NotNull String localizacao) {
         this.localizacao = localizacao;
     }
 
-    public Long getIdFonte() {
-        return idFonte;
+    public @NotNull String getTipoEnergia() {
+        return tipoEnergia;
     }
 
-    public void setIdFonte(Long idFonte) {
-        this.idFonte = idFonte;
+    public void setTipoEnergia(@NotNull String tipoEnergia) {
+        this.tipoEnergia = tipoEnergia;
     }
 
     public void padronizarLocalizacao() {
@@ -70,9 +71,10 @@ public class ProjetoTO {
         }
     }
 
-    // Valida se o idFonte está dentro do intervalo permitido (1 a 6)
-    public boolean possuiFontesRelacionadas() {
-        return idFonte >= 1 && idFonte <= 6;  // Verifica se o ID da fonte está entre 1 e 6
+    public void padronizarEnergia() {
+        if (tipoEnergia != null) {
+            this.tipoEnergia = tipoEnergia.trim().toLowerCase();
+        }
     }
 
 }

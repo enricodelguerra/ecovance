@@ -16,11 +16,11 @@ public class ProjetoDAO extends Repository{
             if (rs != null) {
                 while (rs.next()) {
                     ProjetoTO projeto = new ProjetoTO();
-                    projeto.setIdFonte(rs.getLong("id_fonte_energia"));
                     projeto.setIdProjeto(rs.getLong("id_projeto"));
                     projeto.setNome(rs.getString("nome"));
                     projeto.setDescricao(rs.getString("descricao"));
-                    projeto.setLocalizacao("localizacao");
+                    projeto.setLocalizacao(rs.getString("localizacao"));
+                    projeto.setTipoEnergia(rs.getString("tipo_energia"));
                     projetos.add(projeto);
                 }
             }
@@ -39,11 +39,11 @@ public class ProjetoDAO extends Repository{
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 ProjetoTO projeto = new ProjetoTO();
-                projeto.setIdFonte(rs.getLong("id_fonte_energia"));
                 projeto.setIdProjeto(rs.getLong("id_projeto"));
                 projeto.setNome(rs.getString("nome"));
                 projeto.setDescricao(rs.getString("descricao"));
                 projeto.setLocalizacao(rs.getString("localizacao"));
+                projeto.setTipoEnergia(rs.getString("tipo_energia"));
                 return projeto;
             }
         } catch (SQLException e) {
@@ -55,12 +55,12 @@ public class ProjetoDAO extends Repository{
     }
 
     public ProjetoTO save(ProjetoTO projeto) {
-        String sql = "insert into t_eco_projeto (NOME , DESCRICAO, LOCALIZACAO, ID_FONTE_ENERGIA) values (?, ?, ?, ?)";
+        String sql = "insert into t_eco_projeto (NOME , DESCRICAO, LOCALIZACAO, TIPO_ENERGIA) values (?, ?, ?, ?)";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)){
             ps.setString(1, projeto.getNome());
             ps.setString(2, projeto.getDescricao());
             ps.setString(3, projeto.getLocalizacao());
-            ps.setLong(4, projeto.getIdFonte());
+            ps.setString(4, projeto.getTipoEnergia());
             if (ps.executeUpdate() > 0) {
                 return projeto;
             }
@@ -73,12 +73,13 @@ public class ProjetoDAO extends Repository{
     }
 
     public ProjetoTO edit( ProjetoTO projeto) {
-        String sql = "update t_eco_projeto set NOME = ?, DESCRICAO = ?, LOCALIZACAO = ? where ID_PROJETO = ?";
+        String sql = "update t_eco_projeto set NOME = ?, DESCRICAO = ?, LOCALIZACAO = ?, TIPO_ENERGIA = ? where ID_PROJETO = ?";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)){
-            ps.setLong(4, projeto.getIdProjeto());
+            ps.setLong(5, projeto.getIdProjeto());
             ps.setString(1, projeto.getNome());
             ps.setString(2, projeto.getDescricao());
             ps.setString(3, projeto.getLocalizacao());
+            ps.setString(4, projeto.getTipoEnergia());
             if (ps.executeUpdate() > 0) {
                 return projeto;
             }

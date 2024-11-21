@@ -41,27 +41,27 @@ public class AtividadeTO {
         this.idAtividade = idAtividade;
     }
 
-    public Long getId_projeto() {
+    public @NotNull Long getId_projeto() {
         return id_projeto;
     }
 
-    public void setId_projeto(Long id_projeto) {
+    public void setId_projeto(@NotNull Long id_projeto) {
         this.id_projeto = id_projeto;
     }
 
-    public String getNome() {
+    public @NotNull String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(@NotNull String nome) {
         this.nome = nome;
     }
 
-    public String getDescricao() {
+    public @NotNull String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public void setDescricao(@NotNull String descricao) {
         this.descricao = descricao;
     }
 
@@ -73,19 +73,19 @@ public class AtividadeTO {
         this.responsavel = responsavel;
     }
 
-    public LocalDate getDataInicio() {
+    public @PastOrPresent LocalDate getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(LocalDate dataInicio) {
+    public void setDataInicio(@PastOrPresent LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public LocalDate getDataFim() {
+    public @Future LocalDate getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(LocalDate dataFim) {
+    public void setDataFim(@Future LocalDate dataFim) {
         this.dataFim = dataFim;
     }
 }

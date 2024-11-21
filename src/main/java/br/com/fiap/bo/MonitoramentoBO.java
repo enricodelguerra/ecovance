@@ -25,6 +25,8 @@ public class MonitoramentoBO {
 
     public MonitoramentoTO save(MonitoramentoTO monitoramento) {
         MonitoramentoDAO = new MonitoramentoDAO();
+        monitoramento.padronizarEnergia();
+        monitoramento.padronizarStatus();
         return MonitoramentoDAO.save(monitoramento);
     }
 
@@ -34,6 +36,8 @@ public class MonitoramentoBO {
         if ("finalizado".equalsIgnoreCase(monitoramento.getStatus())) {
             throw new MonitoramentoValidationException("Não é possível editar um monitoramento finalizado.");
         }
+        monitoramento.padronizarEnergia();
+        monitoramento.padronizarStatus();
         return MonitoramentoDAO.edit( monitoramento);
     }
 

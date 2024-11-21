@@ -27,12 +27,16 @@ public class PrevisaoBO {
         if (!previsao.validarPrevisao()) {
             throw new IllegalArgumentException("Dados de previsão inválidos para salvar.");
         }
+        previsao.padronizarEnergia();
+        previsao.padronizarIntensidadePrevisao();
         return PrevisaoDAO.save(previsao);
     }
 
 
     public PrevisaoTO edit(PrevisaoTO previsao) {
         PrevisaoDAO = new PrevisaoDAO();
+        previsao.padronizarEnergia();
+        previsao.padronizarIntensidadePrevisao();
         return PrevisaoDAO.edit( previsao);
     }
 

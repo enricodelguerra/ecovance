@@ -45,35 +45,47 @@ public class MonitoramentoTO {
         this.idProjeto = idProjeto;
     }
 
-    public LocalDate getDataMonitoramento() {
+    public @PastOrPresent LocalDate getDataMonitoramento() {
         return dataMonitoramento;
     }
 
-    public void setDataMonitoramento(LocalDate dataMonitoramento) {
+    public void setDataMonitoramento(@PastOrPresent LocalDate dataMonitoramento) {
         this.dataMonitoramento = dataMonitoramento;
     }
 
-    public String getTipoEnergia() {
-        return this.tipoEnergia;
+    public @NotNull String getTipoEnergia() {
+        return tipoEnergia;
     }
 
-    public void setTipoEnergia(String tipoEnergia) {
+    public void setTipoEnergia(@NotNull String tipoEnergia) {
         this.tipoEnergia = tipoEnergia;
     }
 
-    public Double getGeracaoAtual() {
+    public @NotNull Double getGeracaoAtual() {
         return geracaoAtual;
     }
 
-    public void setGeracaoAtual(Double geracaoAtual) {
+    public void setGeracaoAtual(@NotNull Double geracaoAtual) {
         this.geracaoAtual = geracaoAtual;
     }
 
-    public String getStatus() {
+    public @NotNull String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(@NotNull String status) {
         this.status = status;
+    }
+
+    public void padronizarEnergia() {
+        if (tipoEnergia != null) {
+            this.tipoEnergia = tipoEnergia.trim().toLowerCase();
+        }
+    }
+
+    public void padronizarStatus() {
+        if ( status != null) {
+            this.status = status.trim().toLowerCase();
+        }
     }
 }

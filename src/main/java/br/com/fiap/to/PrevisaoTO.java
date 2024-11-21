@@ -44,36 +44,47 @@ public class PrevisaoTO {
         this.idProjeto = idProjeto;
     }
 
-    public LocalDate getDataPrevisao() {
+    public @PastOrPresent LocalDate getDataPrevisao() {
         return dataPrevisao;
     }
 
-    public void setDataPrevisao(LocalDate dataPrevisao) {
+    public void setDataPrevisao(@PastOrPresent LocalDate dataPrevisao) {
         this.dataPrevisao = dataPrevisao;
     }
 
-    public String getTipoEnergia() {
+    public @NotNull String getTipoEnergia() {
         return tipoEnergia;
     }
 
-    public void setTipoEnergia(String tipoEnergia) {
+    public void setTipoEnergia(@NotNull String tipoEnergia) {
         this.tipoEnergia = tipoEnergia;
     }
 
-    public Double getGeracaoPrevisao() {
+    public @NotNull Double getGeracaoPrevisao() {
         return geracaoPrevisao;
     }
 
-    public void setGeracaoPrevisao(Double geracaoPrevisao) {
+    public void setGeracaoPrevisao(@NotNull Double geracaoPrevisao) {
         this.geracaoPrevisao = geracaoPrevisao;
     }
 
-    public String getIntensidadePrevisao() {
+    public @NotNull String getIntensidadePrevisao() {
         return intensidadePrevisao;
     }
 
-    public void setIntensidadePrevisao(String intensidadePrevisao) {
+    public void setIntensidadePrevisao(@NotNull String intensidadePrevisao) {
         this.intensidadePrevisao = intensidadePrevisao;
+    }
+
+    public void padronizarEnergia() {
+        if (tipoEnergia != null) {
+            this.tipoEnergia = tipoEnergia.trim().toLowerCase();
+        }
+    }
+    public void padronizarIntensidadePrevisao() {
+        if (intensidadePrevisao != null) {
+            this.intensidadePrevisao = intensidadePrevisao.trim().toLowerCase();
+        }
     }
 
     public boolean validarPrevisao() {
